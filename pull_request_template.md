@@ -7,8 +7,6 @@
 **Additional context**: <any_other_context_about_it_goes_here>
 
 ## Types of changes
-
-What types of changes does your code introduce?
 _Put an `x` in the boxes that apply_
 
 - [ ] Documentation or cosmetic update (not impacting the code)
@@ -17,9 +15,10 @@ _Put an `x` in the boxes that apply_
 - [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
 
 ## Checklist
-_Put an `x` in the boxes that apply. You can also fill these out after creating the PR.
-If you're unsure about any of them, don't hesitate to ask. We're here to 
-help! This is simply a reminder of what we are going to look for before merging your changes._
+_Put an `x` in the boxes that apply. You can also fill these out after creating the PR._
+
+_If you're unsure, don't hesitate to ask for help in a comment.
+This is simply a reminder of what reviewers are going to look._
 
 - [ ] Title of the PR is meaningful
 - [ ] Description refers to an issue discussing the matter
