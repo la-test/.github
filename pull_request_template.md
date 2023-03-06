@@ -1,34 +1,32 @@
----
-name: Pull request
-about: Create a pull request
-label: 'triage me'
----
-Thank you for opening a Pull Request!
+## Description
 
-Before submitting your PR, there are a few things you can do to make sure it goes smoothly:
-
-- [ ] Title of the PR is meaningful
-- [ ] There is an open issue about the matter
-- [ ] Tests have been added for new functionalities
-- [ ] Documentation has been updated accordingly
-- [ ] Ensure checks in place have passed, if relevant
-- [ ] Ensure code coverage does not decrease, if relevant
-
-#####PLEASE REMOVE THIS HEADER BEFORE SUBMITTING#####
-
-**Related issue(s)**: Relates #<<issue_number_goes_here>>
+**Related issue(s)**: Closes #<issue_number_goes_here>
 
 **Proposed change(s)**: <details_about_your_change_goes_here>
 
 **Additional context**: <any_other_context_about_it_goes_here>
 
-## Code Review Checklist (to be filled out by reviewer)
+## Types of changes
 
-### Mandatory
-- [ ] Title and description accurately reflects what changes are being made
-- [ ] Description explains why the changes are being made (or references an issue containing one)
-- [ ] The PR appropriately sized
-### Optional
+What types of changes does your code introduce?
+_Put an `x` in the boxes that apply_
+
+- [ ] Documentation or cosmetic update (not impacting the code)
+- [ ] Bugfix (non-breaking change which fixes an issue)
+- [ ] New feature (non-breaking change which adds functionality)
+- [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
+
+## Checklist
+_Put an `x` in the boxes that apply. You can also fill these out after creating the PR.
+If you're unsure about any of them, don't hesitate to ask. We're here to 
+help! This is simply a reminder of what we are going to look for before merging your changes._
+
+- [ ] Title of the PR is meaningful
+- [ ] Description refers to an issue discussing the matter
+- [ ] The PR is appropriately sized
 - [ ] Tests have been added for new functionalities
-- [ ] New code has enough documentation to answer "how do I use it?" and "what does it do?"
-- [ ] Existing documentation is up-to-date, if impacted.
+- [ ] Documentation has been updated accordingly
+- [ ] Checks in place have passed, if relevant
+- [ ] Code coverage does not decrease, if relevant
+
+## Thank you!
