@@ -3,7 +3,6 @@ name: Pull request
 about: Create a pull request
 label: 'triage me'
 ---
-
 Thank you for opening a Pull Request!
 
 Before submitting your PR, there are a few things you can do to make sure it goes smoothly:
@@ -15,18 +14,14 @@ Before submitting your PR, there are a few things you can do to make sure it goe
 - [ ] Ensure checks in place have passed, if relevant
 - [ ] Ensure code coverage does not decrease, if relevant
 
-#####PLEASE REMOVE THIS HEADER BEFORE SUBMITTING
+#####PLEASE REMOVE THIS HEADER BEFORE SUBMITTING#####
 
-## Related issue(s)
-Reference a related issue (type `#` to get a list of suggested issues), eventually putting `Closes #XXXX` to auto-close the issue.
+**Related issue(s)**: Relates #<<issue_number_goes_here>>
 
-## Proposed change(s)
-Add some details about your PR.
+**Proposed change(s)**: <details_about_your_change_goes_here>
 
-## Additional context
-Add any other context about the PR here.
+**Additional context**: <any_other_context_about_it_goes_here>
 
----
 ## Code Review Checklist (to be filled out by reviewer)
 
 ### Mandatory
