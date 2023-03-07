@@ -18,7 +18,7 @@ _Put an `x` in the boxes that apply_
 _Put an `x` in the boxes that apply. You can also fill these out after creating the PR._
 
 _If you're unsure, don't hesitate to ask for help in a comment.
-This is simply a reminder of what reviewers are going to look._
+This is simply a reminder of what reviewers are going to look at._
 
 ### Always required:
 - [ ] Title of the PR is meaningful
