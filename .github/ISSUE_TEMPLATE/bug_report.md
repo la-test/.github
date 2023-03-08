@@ -1,5 +1,5 @@
 ---
-name: Bug Report
+name: Bug report
 about: Report a problem in existing functionality
 title: ''
 labels: bug
@@ -8,8 +8,9 @@ assignees: ''
 
 <!--
 BEFORE SUBMITTING: 
-1) Please search to make sure this issue has not been opened already
+1) Please search to make sure this issue has not been opened already.
 2) If this is a implementation question or trouble with your personal project, please post on StackExchange. This will get your question answered more quickly and make it easier for other devs to find the answer in the future.
+3) Delete any comment bloc such as this one.
 -->
 
 ### Description

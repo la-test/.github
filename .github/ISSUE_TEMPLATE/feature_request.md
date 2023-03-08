@@ -10,6 +10,7 @@ assignees: ''
 BEFORE SUBMITTING: 
 1) Please search to make sure this feature has not been requested already
 2) If it is about something that does not work as expected, please create a bug report instead.
+3) Delete any comment bloc such as this one.
 -->
 
 ### Description
