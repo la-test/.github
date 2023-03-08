@@ -1,6 +1,6 @@
 ---
 name: Feature request
-about: Propose an idea for new improvements/features
+about: Suggest a new feature or an improvement of existing functionality
 title: ''
 labels: enhancement
 assignees: ''
@@ -13,15 +13,13 @@ BEFORE SUBMITTING:
 -->
 
 ### Description
-
-Please describe what functionality is needed
+<!-- Describe the problem this feature/improvement is addressing, and the solution you'd like -->
 
 ### Motivation
-
-Please describe why it is needed
+<!-- Describe why it is needed: the value to a user, and who that user might be -->
 
 ### Acceptance criteria
-
-Please describe the conditions which must be met for this issue to close
+<!-- Describe the conditions which must be met for this request to be closed -->
 
 ### Additional information
+<!-- E.g.: Link to example, documentation and/or non-duplicate issue -->
