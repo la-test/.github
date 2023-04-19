@@ -3,7 +3,7 @@ name: Feature request
 about: Suggest a new feature or an improvement of existing functionality
 title: ''
 labels: enhancement
-assignees: '@btlogy'
+assignees: 'btlogy'
 ---
 
 <!--
