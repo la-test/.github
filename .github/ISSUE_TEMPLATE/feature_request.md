@@ -3,7 +3,7 @@ name: Feature request
 about: Suggest a new feature or an improvement of existing functionality
 title: ''
 labels: enhancement
-assignees: ''
+assignees: '@btlogy'
 ---
 
 <!--
@@ -13,14 +13,14 @@ BEFORE SUBMITTING:
 3) Delete any comment bloc such as this one.
 -->
 
-### Description
+#### Description
 <!-- Describe the problem this feature/improvement is addressing, and the solution you'd like -->
 
-### Motivation
+#### Motivation
 <!-- Describe why it is needed: the value to a user, and who that user might be -->
 
-### Acceptance criteria
+#### Acceptance criteria
 <!-- Describe the conditions which must be met for this request to be closed -->
 
-### Additional information
+#### Additional information
 <!-- E.g.: Link to example, documentation and/or non-duplicate issue -->

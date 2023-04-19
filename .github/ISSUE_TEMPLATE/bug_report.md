@@ -3,7 +3,7 @@ name: Bug report
 about: Report a problem in existing functionality
 title: ''
 labels: bug
-assignees: ''
+assignees: '@btlogy'
 ---
 
 <!--
@@ -13,7 +13,7 @@ BEFORE SUBMITTING:
 3) Delete any comment bloc such as this one.
 -->
 
-### Description
+#### Description
 <!-- A few words describing the bug -->
 
 ### Steps to reproduce
@@ -22,19 +22,19 @@ BEFORE SUBMITTING:
 3. Scroll down to '...'
 4. See error
 
-### Expected behavior
+#### Expected behavior
 <!-- Describe what you expected to happen -->
 
-### Actual behavior
+#### Actual behavior
 <!-- Describe what actualy happen instead -->
 
-### Software and versions
+#### Software and versions
 - Operating system(s): <!-- e.g.: OS X, Windows 11, Android 10 -->
 - Application(s): <!-- e.g.: myApp 1.2.3, Safari 6, Firefox 104 -->
 
-### Logs and screenshots
+#### Logs and screenshots
 <!-- Add logs and/or screenshots, if possible -->
 
-### Additional context
+#### Additional context
 <!-- Add any other context about the problem here -->
 <!-- E.g.: Does it happen all the time? With other user/software? -->
