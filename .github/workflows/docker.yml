@@ -1,0 +1,41 @@
+name: Docker
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/docker.yml'
+      - 'actions/*doker*'
+      - 'docker-composer.yml'
+      - 'docker/**'
+  pull_request:
+    paths:
+      - '.github/workflows/docker.yml'
+      - 'actions/*doker*'
+      - 'docker-composer.yml'
+      - 'docker/**'
+  workflow_dispatch:
+
+jobs:
+  docker:
+    name: Docker
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@v4
+
+      - name: Prepare image
+        id: prepare
+        uses: ./actions/setup-docker-image
+        with:
+          service-name: debian
+
+      - name: Test image
+        id: test
+        run: |
+          docker compose run --rm \
+          debian bash -e << EOC
+            true
+          EOC
