@@ -1,0 +1,53 @@
+name: Nix
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/nix.yml'
+      - '*.nix'
+      - 'flake.lock'
+  pull_request:
+    paths:
+      - '.github/workflows/nix.yml'
+      - '*.nix'
+      - 'flake.lock'
+
+jobs:
+  check:
+    name: Check
+    runs-on: ubuntu-24.04
+    env:
+      NIX_CONFIG: extra-experimental-features = nix-command flakes
+      NIX_PATH: nixpkgs=flake:nixpkgs
+    steps:
+      - name: Install Nix
+        id: install_nix
+        uses: nixbuild/nix-quick-install-action@2c9db80fb984ceb1bcaa77cdda3fdf8cfba92035 # v34
+        #if: github.runner != "nixos"
+
+      - name: Checkout action
+        id: checkout_action
+        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+        with:
+          sparse-checkout: |
+            actions/checkout-nix-flake
+
+      - name: Checkout flake
+        id: checkout_flake
+        uses: ./actions/checkout-nix-flake
+        with:
+          path: ./flake
+
+      - name: Check Nix Flake
+        id: check_flake
+        working-directory: ./flake
+        run: |
+          nix flake check
+
+      - name: Check Nix Shell
+        id: check_shell
+        working-directory: ./flake
+        run: |
+          nix-shell --run "docker-compose version"
