@@ -13,15 +13,17 @@ updates:
     reviewers:
       - "btlogy"
   # Keep Github Actions up to date
-  # Bump the dependencies of the re-usable actions published here
+  # Bump the dependencies of the re-usable actions published from here
   - package-ecosystem: "github-actions"
-    directory: "/actions"
+    directories:
+      - "/actions/checkout-nix-flake"
+      - "/actions/setup-docker-image"
     schedule:
       interval: "daily"
       time: "12:30"
     reviewers:
       - "btlogy"
-  # Bump the dependencies consumed by the CI workflow running here
+  # Bump the dependencies of the CI workflow in place here
   - package-ecosystem: "github-actions"
     directory: "/.github/workflows"
     schedule:
