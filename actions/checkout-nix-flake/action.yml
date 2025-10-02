@@ -1,0 +1,34 @@
+name: 'Checkout Nix Flake'
+description: 'Checkout a flake through the nix store'
+inputs:
+  path:
+    description: Checkout the flake to path dest.
+    required: false
+    default: "."
+env:
+  NIX_CONFIG: extra-experimental-features = nix-command flakes
+  NIX_PATH: nixpkgs=flake:nixpkgs:/nix/var/nix/profiles/system
+runs:
+  using: "composite"
+  steps:
+    - name: Prepare URL
+      id: prepare
+      run: |
+        # Use the environment to prepare the URL of the flake
+        echo FLAKE_URL="git+https://${GITHUB_REPOSITORY_OWNER}:${{ github.token }}@${GITHUB_SERVER_URL##*://}/${GITHUB_REPOSITORY}" >> $GITHUB_ENV
+        echo FLAKE_REF="${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}" >> $GITHUB_ENV
+        echo FLAKE_REV="${GITHUB_SHA}" >> $GITHUB_ENV
+      shell: bash
+
+    - name: Fetch from remote
+      id: fetch
+      run: |
+        nix flake metadata "${FLAKE_URL}?ref=${FLAKE_REF}&rev=${FLAKE_REV}"
+      shell: bash
+
+    - name: Chekout from store
+      id: checkout
+      run: |
+        nix flake clone --offline --quiet --refresh --dest "${{ inputs.path }}" "${FLAKE_URL}?ref=${FLAKE_REF}"
+        nix flake show
+      shell: bash
