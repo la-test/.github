@@ -18,6 +18,7 @@ updates:
     directories:
       - "/actions/checkout-nix-flake"
       - "/actions/setup-docker-image"
+      - "/actions/update-nix-flake"
     schedule:
       interval: "daily"
       time: "12:30"

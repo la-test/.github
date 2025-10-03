@@ -1,0 +1,32 @@
+name: Update Nix
+on:
+  schedule:
+    - cron: "27 4 * * 1"
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/update_nix.yml'
+
+jobs:
+  flake:
+    name: Flake
+    runs-on: ubuntu-24.04
+    env:
+      NIX_CONFIG: extra-experimental-features = nix-command flakes
+      NIX_PATH: nixpkgs=flake:nixpkgs
+    steps:
+      - name: Install Nix
+        id: install_nix
+        uses: nixbuild/nix-quick-install-action@2c9db80fb984ceb1bcaa77cdda3fdf8cfba92035 # v34
+
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+        with:
+          fetch-depth: 0 # All commits required to diff changes
+
+      - name: Update Nix Flake
+        id: update_nix_flake
+        uses: ./actions/update-nix-flake
+        with:
+          token: ${{ secrets.GH_PAT_UPDATE }}

@@ -1,0 +1,66 @@
+name: 'Update Nix Flake'
+description: 'Create a pull-request to update the nix flake'
+inputs:
+  token:
+    description: 'Personal Access Token with write permissions on content of the repository'
+    required: true
+env:
+  NIX_CONFIG: extra-experimental-features = nix-command flakes
+  NIX_PATH: nixpkgs=flake:nixpkgs
+runs:
+  using: "composite"
+  steps:
+    - name: Update
+      id: update
+      run: |
+        nix flake update 2>&1 \
+        | tee /dev/stderr \
+        | grep -A 2 "Updated input" \
+        > ./nix-flake-update.stdout
+      shell: bash
+
+    - name: Check
+      id: check
+      run: |
+        nix flake show
+        nix flake check
+      shell: bash
+
+    - name: Diff
+      id: diff
+      run: |
+        nix store diff-closures .?ref=origin/main#devShells.x86_64-linux.default .?ref=HEAD#devShells.x86_64-linux.default \
+        | tee /dev/stderr \
+        > ./nix-shell-diff.stdout
+      shell: bash
+
+    - name: Prepare pull-request
+      id: prepare
+      run: |
+        cat <<EOT | tee ./pull-request-body.md >> $GITHUB_STEP_SUMMARY
+        ### Nix Flake Update
+        \`\`\`
+        `cat ./nix-flake-update.stdout`
+        \`\`\`
+        ### Nix Shell Diff
+        \`\`\`
+        `cat ./nix-shell-diff.stdout`
+        \`\`\`
+        EOT
+      shell: bash
+
+    - name: Create pull-request
+      id: create
+      # The pull-request should only be created on scheduled or dispatched workflows
+      if: ${{ github.event_name != 'pull_request' }}
+      uses: peter-evans/create-pull-request@271a8d0340265f705b14b6d32b9829c1cb33d45e # v7.0.8
+      with:
+        add-paths: |
+          flake.lock
+        base: "main"
+        branch: "update-nix-flake"
+        commit-message: "Update Nix Flake"
+        delete-branch: true
+        title: "Update Nix Flake"
+        token: ${{ inputs.token }}
+        body-path: "./pull-request-body.md"
