@@ -5,11 +5,13 @@ on:
     branches:
       - main
     paths:
+      - 'actions/checkout-nix-flake/*'
       - '.github/workflows/nix.yml'
       - '*.nix'
       - 'flake.lock'
   pull_request:
     paths:
+      - 'actions/checkout-nix-flake/*'
       - '.github/workflows/nix.yml'
       - '*.nix'
       - 'flake.lock'

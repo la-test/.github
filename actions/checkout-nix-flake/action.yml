@@ -1,7 +1,7 @@
 name: 'Checkout Nix Flake'
 description: 'Checkout a flake through the nix store'
 inputs:
-  nix_config:
+  nix_conf:
     description: 'Configuration options to pass to Nix env.'
     required: false
     default: 'extra-experimental-features = nix-command flakes'
