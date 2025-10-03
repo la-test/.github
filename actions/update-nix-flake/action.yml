@@ -1,7 +1,7 @@
 name: 'Update Nix Flake'
 description: 'Create a pull-request to update the nix flake'
 inputs:
-  nix_conf:
+  nix_config:
     description: 'Configuration options to pass to Nix env.'
     required: false
     default: 'extra-experimental-features = nix-command flakes'
@@ -18,7 +18,7 @@ runs:
     - name: Prepare
       id: prepare
       run: |
-        echo NIX_CONF="${{ inputs.nix_conf }}" >> $GITHUB_ENV
+        echo NIX_CONFIG="${{ inputs.nix_config }}" >> $GITHUB_ENV
         echo NIX_PATH="${{ inputs.nix_path }}" >> $GITHUB_ENV
       shell: bash
 

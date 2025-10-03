@@ -1,7 +1,7 @@
 name: 'Checkout Nix Flake'
 description: 'Checkout a flake through the nix store'
 inputs:
-  nix_conf:
+  nix_config:
     description: 'Configuration options to pass to Nix env.'
     required: false
     default: 'extra-experimental-features = nix-command flakes'
@@ -22,7 +22,7 @@ runs:
         echo FLAKE_URL="git+https://${GITHUB_REPOSITORY_OWNER}:${{ github.token }}@${GITHUB_SERVER_URL##*://}/${GITHUB_REPOSITORY}" >> $GITHUB_ENV
         echo FLAKE_REF="${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}" >> $GITHUB_ENV
         echo FLAKE_REV="${GITHUB_SHA}" >> $GITHUB_ENV
-        echo NIX_CONF="${{ inputs.nix_conf }}" >> $GITHUB_ENV
+        echo NIX_CONFIG="${{ inputs.nix_config }}" >> $GITHUB_ENV
         echo NIX_PATH="${{ inputs.nix_path }}" >> $GITHUB_ENV
       shell: bash
 
