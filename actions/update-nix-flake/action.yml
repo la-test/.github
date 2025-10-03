@@ -1,15 +1,27 @@
 name: 'Update Nix Flake'
 description: 'Create a pull-request to update the nix flake'
 inputs:
+  nix_config:
+    description: 'Configuration options to pass to Nix env.'
+    required: false
+    default: 'extra-experimental-features = nix-command flakes'
+  nix_path:
+    description:
+    required: false
+    default: 'nixpkgs=flake:nixpkgs'
   token:
     description: 'Personal Access Token with write permissions on content of the repository'
     required: true
-env:
-  NIX_CONFIG: extra-experimental-features = nix-command flakes
-  NIX_PATH: nixpkgs=flake:nixpkgs
 runs:
   using: "composite"
   steps:
+    - name: Prepare
+      id: prepare
+      run: |
+        echo NIX_CONF="${{ inputs.nix_conf }}" >> $GITHUB_ENV
+        echo NIX_PATH="${{ inputs.nix_path }}" >> $GITHUB_ENV
+      shell: bash
+
     - name: Update
       id: update
       run: |
@@ -35,7 +47,7 @@ runs:
       shell: bash
 
     - name: Prepare pull-request
-      id: prepare
+      id: prepare-pr
       run: |
         cat <<EOT | tee ./pull-request-body.md >> $GITHUB_STEP_SUMMARY
         ### Nix Flake Update
@@ -50,7 +62,7 @@ runs:
       shell: bash
 
     - name: Create pull-request
-      id: create
+      id: create-pr
       # The pull-request should only be created on scheduled or dispatched workflows
       if: ${{ github.event_name != 'pull_request' }}
       uses: peter-evans/create-pull-request@271a8d0340265f705b14b6d32b9829c1cb33d45e # v7.0.8

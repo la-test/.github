@@ -18,14 +18,10 @@ jobs:
   check:
     name: Check
     runs-on: ubuntu-24.04
-    env:
-      NIX_CONFIG: extra-experimental-features = nix-command flakes
-      NIX_PATH: nixpkgs=flake:nixpkgs
     steps:
       - name: Install Nix
         id: install_nix
         uses: nixbuild/nix-quick-install-action@2c9db80fb984ceb1bcaa77cdda3fdf8cfba92035 # v34
-        #if: github.runner != "nixos"
 
       - name: Checkout action
         id: checkout_action

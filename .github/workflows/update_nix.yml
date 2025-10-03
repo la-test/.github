@@ -11,9 +11,6 @@ jobs:
   flake:
     name: Flake
     runs-on: ubuntu-24.04
-    env:
-      NIX_CONFIG: extra-experimental-features = nix-command flakes
-      NIX_PATH: nixpkgs=flake:nixpkgs
     steps:
       - name: Install Nix
         id: install_nix
